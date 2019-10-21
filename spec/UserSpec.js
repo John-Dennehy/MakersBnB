@@ -34,7 +34,7 @@ describe("User", function() {
       //
       // it("check if the username already exists", function() {
       //   expect(function() {user.SignUp(username, email, password)}).toThrow("This username is already in use")
-      // });
+      // })
     });
 
 });

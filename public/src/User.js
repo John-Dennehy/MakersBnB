@@ -10,5 +10,5 @@ User.prototype.SignUp = function(username, email, password) {
   } else {
     // console.log("fl")
     throw "Please enter a valid email address"
-  }
+  };
 };
