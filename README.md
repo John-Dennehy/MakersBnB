@@ -35,4 +35,18 @@ Nice-to-haves:
     A ‘chat’ functionality once a space has been booked, allowing users whose space-booking request has been confirmed to chat with the user that owns that space
     Basic payment implementation though Stripe.
 
-```User Stories
+# User Stories 
+
+# File Structure 
+- Lib 
+    - user.rb
+    - space.rb 
+    - request.rb 
+- Spec 
+    - unit 
+        - user_spec.rb
+        - space_spec.rb
+        - request_spec.rb
+    - feature 
+        - <frontend tests> 
+- <Frontend files> 
