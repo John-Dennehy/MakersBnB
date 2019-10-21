@@ -1,0 +1,68 @@
+require 'pg'
+
+task :drop_makers_bnb_database do
+  connection = PG.connect
+  connection.exec('DROP DATABASE makers_bnb;')
+end
+
+task :drop_makers_bnb_test_database do
+  connection = PG.connect
+  connection.exec('DROP DATABASE makers_bnb_test;')
+end
+
+task install: [:create_users_table, :create_spaces_table, :create_requests_table] do
+  p "Done"
+end
+
+task install_test: [:create_users_test_table, :create_spaces_test_table, :create_requests_test_table ] do
+  p "Done"
+end
+
+task :create_makers_bnb_database do
+  p 'Creating Database: makers_bnb'
+  connection = PG.connect
+  connection.exec("CREATE DATABASE makers_bnb;")
+end
+
+task create_users_table: [:create_makers_bnb_database] do
+  p 'Creating Table: users'
+  connection = PG.connect(dbname: 'makers_bnb')
+  connection.exec("CREATE TABLE users(id serial PRIMARY KEY, username VARCHAR (50) UNIQUE NOT NULL, email VARCHAR (355) UNIQUE NOT NULL, password VARCHAR (50) NOT NULL, created_on TIMESTAMPTZ NOT NULL DEFAULT NOW());")
+end
+
+task create_spaces_table: [:create_makers_bnb_database, :create_users_table] do
+  p 'Creating Table: spaces'
+  connection = PG.connect(dbname: 'makers_bnb')
+  connection.exec("CREATE TABLE spaces(id SERIAL PRIMARY KEY, owner_id INTEGER REFERENCES users(id), name VARCHAR(60) NOT NULL, description VARCHAR(500) NOT NULL, ppn INTEGER NOT NULL, created_on TIMESTAMPTZ NOT NULL DEFAULT NOW());")
+end
+
+task create_requests_table: [:create_makers_bnb_database, :create_users_table, :create_spaces_table ] do
+  p 'Creating Table: requests'
+  connection = PG.connect(dbname: 'makers_bnb')
+  connection.exec("CREATE TABLE requests(id serial PRIMARY KEY, space_id INTEGER REFERENCES spaces(id) NOT NULL, requestor_id INTEGER REFERENCES USERS(id) NOT NULL, start_date TIMESTAMPTZ, end_date TIMESTAMPTZ, status VARCHAR(60), created_on TIMESTAMPTZ NOT NULL DEFAULT NOW());")
+end
+
+# Test Database
+task :create_makers_bnb_test_database do
+  p 'Creating Database: makers_bnb_test'
+  connection = PG.connect
+  connection.exec("CREATE DATABASE makers_bnb_test;")
+end
+
+task create_users_test_table: [:create_makers_bnb_test_database] do
+  p 'Creating Table: users'
+  connection = PG.connect(dbname: 'makers_bnb_test')
+  connection.exec("CREATE TABLE users(id serial PRIMARY KEY, username VARCHAR (50) UNIQUE NOT NULL, email VARCHAR (355) UNIQUE NOT NULL, password VARCHAR (50) NOT NULL, created_on TIMESTAMPTZ NOT NULL DEFAULT NOW());")
+end
+
+task create_spaces_test_table: [:create_makers_bnb_test_database, :create_users_test_table] do
+  p 'Creating Table: spaces'
+  connection = PG.connect(dbname: 'makers_bnb_test')
+  connection.exec("CREATE TABLE spaces(id SERIAL PRIMARY KEY, owner_id INTEGER REFERENCES users(id), name VARCHAR(60) NOT NULL, description VARCHAR(500) NOT NULL, ppn INTEGER NOT NULL, created_on TIMESTAMPTZ NOT NULL DEFAULT NOW());")
+end
+
+task create_requests_test_table: [:create_makers_bnb_test_database, :create_users_test_table, :create_spaces_test_table ] do
+  p 'Creating Table: requests'
+  connection = PG.connect(dbname: 'makers_bnb_test')
+  connection.exec("CREATE TABLE requests(id serial PRIMARY KEY, space_id INTEGER REFERENCES spaces(id) NOT NULL, requestor_id INTEGER REFERENCES USERS(id) NOT NULL, start_date TIMESTAMPTZ, end_date TIMESTAMPTZ, status VARCHAR(60), created_on TIMESTAMPTZ NOT NULL DEFAULT NOW());")
+end
