@@ -34,7 +34,16 @@ describe("User", function() {
       //
       // it("check if the username already exists", function() {
       //   expect(function() {user.SignUp(username, email, password)}).toThrow("This username is already in use")
-      // })
+      // });
     });
+
+    describe("ValidUsername", function() {
+      let username = "not-real-username"
+
+      it("check if the username is valid", function() {
+        expect(function() {user.ValidUsername(username)}).toThrow("Please enter a valid username")
+      });
+    })
+
 
 });
