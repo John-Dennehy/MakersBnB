@@ -18,8 +18,23 @@ describe("User", function() {
 
 
 
-    // describe("SignUp", function() {
-    //
-    // });
+    describe("SignUp", function() {
+
+      let username = "not-real-username"
+      let password = "not-real-password"
+
+      it("check if the email is valid", function() {
+        let email = "invalid-email"
+        expect(function() {user.SignUp(username, email, password)}).toThrow("Please enter a valid email address")
+      });
+
+      // it("check if the email already exists", function() {
+      //   expect(function() {user.SignUp(username, email, password)}).toThrow("This email is already in use")
+      // });
+      //
+      // it("check if the username already exists", function() {
+      //   expect(function() {user.SignUp(username, email, password)}).toThrow("This username is already in use")
+      // })
+    });
 
 });
