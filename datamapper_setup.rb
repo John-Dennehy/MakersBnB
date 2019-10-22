@@ -9,7 +9,10 @@ end
 DataMapper.setup(:default, "postgres://localhost:5432/#{database}")
 
 require_relative 'lib/user.rb'
+
 require_relative 'lib/space.rb'
+
+require_relative 'lib/request.rb'
 
 
 DataMapper.finalize

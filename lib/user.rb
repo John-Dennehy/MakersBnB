@@ -7,7 +7,12 @@ class User
     property :username, String
     property :email, String
     property :password, String
-    # accessor: :private
+
+ 
+
+
+    has n, :requests
+
 
   def self.signup(username, email, password)
     valid = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
