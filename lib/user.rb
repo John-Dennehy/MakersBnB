@@ -1,0 +1,23 @@
+class User
+
+attr_reader :username, :password, :email
+
+  def initialize(username, email, password)
+
+    @username = username
+    @password = password
+    @email = email
+  end
+
+  def self.signup(username, email, password)
+    valid = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+    fail "Please insert a username" if username.empty?
+
+    fail "Please insert a email" if email.empty?
+    fail "Please enter a valid email" if !email.match?(valid)
+
+    fail "Please insert a password" if password.empty?
+  end
+
+end
