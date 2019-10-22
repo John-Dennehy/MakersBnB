@@ -10,10 +10,10 @@ enable :sessions
   end
 
   post "/" do
-    
+
     p name = params[:username]
     p mail = params[:email]
-    p pass = params[:password]
+
 
     User.create(username: name, email: mail, password: pass)
     redirect "/new-user"
