@@ -8,7 +8,11 @@ class User
     property :email, String
     property :password, String
 
+ 
+
+
     has n, :requests
+
 
   def self.signup(username, email, password)
     valid = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -19,7 +23,6 @@ class User
     fail "Please enter a valid email" if !email.match?(valid)
 
     fail "Please insert a password" if password.empty?
-
 
   end
 
