@@ -1,9 +1,16 @@
+require 'data_mapper'
+
 class User
 
+include DataMapper::Resource
+
+property :id, Serial
+property :username, String
+property :email, String
+property :password, String
+
 attr_reader :username, :password, :email
-
   def initialize(username, email, password)
-
     @username = username
     @password = password
     @email = email
