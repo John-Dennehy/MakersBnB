@@ -1,23 +1,29 @@
 require 'date'
+require 'space'
 
 describe Space do
-
+subject(:space) {described_class.new(id: 1, name: 'London', description: 'Beautiful place to stay', ppn: 5000 )} 
   describe 'initialization' do
 
+    it 'starts with an id' do
+      expect(space.id).to eq 1
+    end
+
+
     it 'starts with a name' do
-      expect(subject.name).to eq "London"
+      expect(space.name).to eq "London"
     end
 
     it 'starts with a description' do
-      expect(subject.description).to eq "Beautiful place to stay"
+      expect(space.description).to eq "Beautiful place to stay"
     end
 
     it 'starts with a price per night' do
-      expect(subject.ppn).to eq 5000
+      expect(space.ppn).to eq 5000
     end
 
     it 'starts with an empty dates unavailable array' do
-      expect(subject.dates_unavailable).to eq []
+      expect(space.dates_unavailable).to eq []
     end
   end
 
@@ -25,14 +31,14 @@ describe Space do
 
     it 'dates_unavailable array is not empty when date added' do
       date = Date.new(2019,12,20)
-      subject.add_date_unavailable(date: date)
-      expect(subject.dates_unavailable).not_to be_empty
+      space.add_date_unavailable(date: date)
+      expect(space.dates_unavailable).not_to be_empty
     end
 
     it 'pushes the date into the dates_unavailable array' do
       date = Date.new(2019,12,20)
-      subject.add_date_unavailable(date: date)
-      expect(subject.dates_unavailable).to include date
+      space.add_date_unavailable(date: date)
+      expect(space.dates_unavailable).to include date
     end
   end
 end
