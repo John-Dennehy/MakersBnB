@@ -1,22 +1,14 @@
 require 'data_mapper'
 
 class User
+  include DataMapper::Resource
 
-include DataMapper::Resource
+    property :id, Serial
+    property :username, String
+    property :email, String
+    property :password, String
 
-property :id, Serial
-property :username, String
-property :email, String
-property :password, String
-
-has n, :requests
-
-attr_reader :username, :password, :email
-  def initialize(username, email, password)
-    @username = username
-    @password = password
-    @email = email
-  end
+    has n, :requests
 
   def self.signup(username, email, password)
     valid = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -27,6 +19,8 @@ attr_reader :username, :password, :email
     fail "Please enter a valid email" if !email.match?(valid)
 
     fail "Please insert a password" if password.empty?
+
+
   end
 
 end
