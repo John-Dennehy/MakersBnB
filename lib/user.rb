@@ -1,4 +1,4 @@
-require 'data_mapper'
+require './datamapper_setup'
 
 class User
   include DataMapper::Resource
