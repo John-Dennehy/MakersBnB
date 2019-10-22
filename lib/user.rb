@@ -7,6 +7,7 @@ class User
     property :username, String
     property :email, String
     property :password, String
+    # accessor: :private
 
 
   def self.signup(username, email, password)
@@ -18,7 +19,6 @@ class User
     fail "Please enter a valid email" if !email.match?(valid)
 
     fail "Please insert a password" if password.empty?
-
 
   end
 
