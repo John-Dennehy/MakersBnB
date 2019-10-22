@@ -5,11 +5,16 @@ require 'user'
 describe User do
 
   subject(:user) { described_class }
-  # let(:username) { "" }
-  # let(:email) { "" }
-  # let(:password) { "" }
-  # let(:email) { double :email }
-  # let(:password) { double :password }
+
+  describe ".createUser" do
+    it "saves User to db returning a new User object with the DB id" do
+      user1 = User.create(username: "username1", email: "roberta.mangiapanegmail.com", password: "anything")
+      expect(user1.username).to eq "username1"
+      expect(user1.email).to eq "roberta.mangiapanegmail.com"
+      expect(user1.password).to eq "anything"
+    end
+  end
+
 
   describe "#signup" do
 
