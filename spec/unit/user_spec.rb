@@ -1,4 +1,5 @@
 require 'user'
+require_relative '../../datamapper_setup.rb'
 
 describe User do
 
