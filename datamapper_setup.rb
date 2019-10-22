@@ -16,6 +16,5 @@ require_relative 'lib/space.rb'
 
 require_relative 'lib/request.rb'
 
-
 DataMapper.finalize
 DataMapper.auto_upgrade!
