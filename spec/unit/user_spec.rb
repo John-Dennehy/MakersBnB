@@ -1,28 +1,15 @@
-require 'user'
 require_relative '../../datamapper_setup.rb'
+require 'user'
+
 
 describe User do
 
-  subject(:user) { described_class}
-  subject(:user1) {described_class.new(username, email, password)}
-  let(:username) { "" }
-  let(:email) { "" }
-  let(:password) { "" }
+  subject(:user) { described_class }
+  # let(:username) { "" }
+  # let(:email) { "" }
+  # let(:password) { "" }
   # let(:email) { double :email }
   # let(:password) { double :password }
-
-
-  it "user is created with a username" do
-    expect(user1.username).to eq(username)
-  end
-
-  it "user is created with an email" do
-    expect(user1.email).to eq(email)
-  end
-
-  it "user is created with a password" do
-    expect(user1.password).to eq(password)
-  end
 
   describe "#signup" do
 
