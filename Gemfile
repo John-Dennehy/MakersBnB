@@ -8,10 +8,9 @@ ruby '2.6.0'
 
 # gem "rails"
 gem 'json'
-gem 'pg'
 gem 'rack'
 gem 'rake'
 gem 'rspec'
 gem 'sinatra'
 gem 'dm-postgres-adapter'
-gem 'data_mapper'
+gem 'data_mapper', '1.2.0'
