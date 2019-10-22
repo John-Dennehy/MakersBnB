@@ -9,13 +9,6 @@ property :username, String
 property :email, String
 property :password, String
 
-attr_reader :username, :password, :email
-  def initialize(username, email, password)
-    @username = username
-    @password = password
-    @email = email
-  end
-
   def self.signup(username, email, password)
     valid = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
