@@ -6,7 +6,7 @@ class User
     property :email, String
     property :password, String
 
-    # has n, :requests
+    has n, :requests
 end
 
 class Space
@@ -18,7 +18,7 @@ class Space
   property :ppn, Integer
   property :created_at, DateTime
 
-  # has n, :requests
+  has n, :requests
 end
 
 class Request
@@ -30,8 +30,8 @@ class Request
   property :status, String
   property :created_at, DateTime
 
-  # belongs_to :user
-  # belongs_to :space
+  belongs_to :user
+  belongs_to :space
 end
 
 DataMapper.finalize

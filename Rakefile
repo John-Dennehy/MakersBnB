@@ -10,11 +10,6 @@ task :install_db do
   p "Creating user 'bnb_manager' and giving access to db - Default password: 'password'"
   connection.exec("grant all privileges on database makers_bnb to bnb_manager;")
   connection.exec("grant all privileges on database makers_bnb_test to bnb_manager;")
-  connection = PG::Connection.open(dbname:'makers_bnb')
-  connection.exec("CREATE TABLE users")
-  connection.exec("CREATE TABLE spaces")
-  connection.exec("CREATE TABLE requests")
-
 end
 
 task :create_bnb_manager do
