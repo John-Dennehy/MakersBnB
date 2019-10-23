@@ -8,6 +8,7 @@ ruby '2.6.0'
 
 # gem "rails"
 gem 'json'
+gem 'pg'
 gem 'rack'
 gem 'rake'
 gem 'sinatra'
